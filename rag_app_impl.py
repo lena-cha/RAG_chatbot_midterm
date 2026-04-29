@@ -31,63 +31,38 @@ st.markdown(
     """
 <style>
   :root {
-    --ink: #0f1e3d;
-    --muted: #5b6b85;
-    --line: #d6e2f5;
-    --surface: rgba(255, 255, 255, 0.88);
-    --surface-strong: #ffffff;
-    --brand: #1d4ed8;
-    --brand-deep: #1e3a8a;
-    --accent: #2563eb;
-    --accent-soft: #60a5fa;
-    --warning: #b45309;
-    --shadow: 0 18px 48px rgba(29, 78, 216, 0.12);
+    --ink: #e2e8f0;
+    --muted: #94a3b8;
+    --line: #1e293b;
+    --surface: rgba(20, 30, 52, 0.78);
+    --surface-strong: #0f172a;
+    --panel: #131c33;
+    --panel-2: #182441;
+    --brand: #3b82f6;
+    --brand-deep: #93c5fd;
+    --accent: #60a5fa;
+    --accent-soft: #93c5fd;
+    --warning: #fbbf24;
+    --shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
   }
 
   .stApp {
     color: var(--ink);
     background:
-      radial-gradient(circle at 8% 8%, rgba(37, 99, 235, 0.14), transparent 32%),
-      radial-gradient(circle at 92% 0%, rgba(96, 165, 250, 0.18), transparent 28%),
-      linear-gradient(180deg, #f4f8ff 0%, #e8f0fe 48%, #f7faff 100%);
+      radial-gradient(circle at 8% 8%, rgba(59, 130, 246, 0.22), transparent 32%),
+      radial-gradient(circle at 92% 0%, rgba(96, 165, 250, 0.16), transparent 30%),
+      linear-gradient(180deg, #070b1a 0%, #0d1428 48%, #08101f 100%);
   }
 
+  /* Hide the default left sidebar (settings now live in a right column) */
   section[data-testid="stSidebar"] {
-    background: rgba(248, 251, 255, 0.95);
-    border-right: 1px solid rgba(29, 78, 216, 0.16);
-    min-width: 320px !important;
+    display: none !important;
   }
-
-  section[data-testid="stSidebar"] > div {
-    padding: 1.6rem 1.4rem 1.2rem 1.4rem;
+  [data-testid="stSidebarCollapsedControl"] {
+    display: none !important;
   }
-
-  section[data-testid="stSidebar"] h1,
-  section[data-testid="stSidebar"] h2,
-  section[data-testid="stSidebar"] h3,
-  section[data-testid="stSidebar"] h4,
-  section[data-testid="stSidebar"] p,
-  section[data-testid="stSidebar"] label,
-  section[data-testid="stSidebar"] span,
-  section[data-testid="stSidebar"] div {
-    color: var(--ink) !important;
-  }
-
-  section[data-testid="stSidebar"] h3,
-  section[data-testid="stSidebar"] h4 {
-    color: var(--brand-deep) !important;
-    margin-top: 0.6rem;
-    margin-bottom: 0.4rem;
-  }
-
-  section[data-testid="stSidebar"] [data-testid="stCaptionContainer"],
-  section[data-testid="stSidebar"] small {
-    color: var(--muted) !important;
-  }
-
-  section[data-testid="stSidebar"] hr {
-    border-color: rgba(29, 78, 216, 0.18);
-    margin: 1rem 0;
+  div[data-testid="stAppViewContainer"] > section.main {
+    margin-left: 0 !important;
   }
 
   .block-container {
@@ -102,17 +77,17 @@ st.markdown(
     gap: 28px;
     padding: 30px 34px;
     margin-bottom: 26px;
-    border: 1px solid rgba(29, 78, 216, 0.14);
+    border: 1px solid rgba(96, 165, 250, 0.22);
     border-radius: 14px;
     background:
-      linear-gradient(135deg, rgba(255,255,255,0.94), rgba(232,240,254,0.86)),
-      linear-gradient(135deg, rgba(37,99,235,0.18), rgba(96,165,250,0.14));
+      linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.72)),
+      linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(96, 165, 250, 0.18));
     box-shadow: var(--shadow);
   }
 
   .hero h1 {
     margin: 0;
-    color: var(--brand-deep);
+    color: #f1f5f9;
     font-size: clamp(2rem, 4.2vw, 4.4rem);
     line-height: 1.0;
     font-weight: 800;
@@ -139,10 +114,10 @@ st.markdown(
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
-    border: 1px solid rgba(37, 99, 235, 0.25);
+    border: 1px solid rgba(96, 165, 250, 0.35);
     border-radius: 999px;
-    background: rgba(219, 234, 254, 0.85);
-    color: var(--brand-deep);
+    background: rgba(59, 130, 246, 0.18);
+    color: #bfdbfe;
     font-size: 0.78rem;
     font-weight: 700;
   }
@@ -150,14 +125,14 @@ st.markdown(
   .hero-side {
     min-width: 220px;
     padding: 16px 18px;
-    border: 1px solid rgba(29, 78, 216, 0.18);
+    border: 1px solid rgba(96, 165, 250, 0.28);
     border-radius: 12px;
-    background: linear-gradient(160deg, rgba(255,255,255,0.92), rgba(219,234,254,0.6));
+    background: linear-gradient(160deg, rgba(30, 41, 59, 0.88), rgba(30, 58, 138, 0.45));
   }
 
   .hero-side strong {
     display: block;
-    color: var(--brand-deep);
+    color: #dbeafe;
     font-size: 1.8rem;
     line-height: 1;
     letter-spacing: 0.02em;
@@ -172,20 +147,49 @@ st.markdown(
 
   .panel {
     padding: 18px;
-    border: 1px solid rgba(29, 78, 216, 0.12);
+    border: 1px solid rgba(96, 165, 250, 0.18);
     border-radius: 12px;
     background: var(--surface);
-    box-shadow: 0 10px 32px rgba(29, 78, 216, 0.08);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
   }
 
   .callout {
     padding: 16px 18px;
-    border: 1px solid rgba(37, 99, 235, 0.22);
-    border-left: 4px solid var(--brand);
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    border-left: 4px solid var(--accent);
     border-radius: 10px;
-    background: rgba(219, 234, 254, 0.55);
-    color: var(--brand-deep);
+    background: rgba(30, 58, 138, 0.30);
+    color: #cbd5e1;
     line-height: 1.55;
+  }
+
+  .settings-panel {
+    padding: 20px 18px 4px;
+    border: 1px solid rgba(96, 165, 250, 0.22);
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(20, 30, 52, 0.82), rgba(15, 23, 42, 0.92));
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
+    position: sticky;
+    top: 1rem;
+  }
+
+  .settings-panel h3 {
+    color: #dbeafe !important;
+    margin: 0 0 4px 0 !important;
+    font-size: 1.05rem !important;
+    letter-spacing: 0.02em;
+  }
+
+  .settings-panel .settings-sub {
+    color: #93a4c1 !important;
+    font-size: 0.82rem;
+    margin-bottom: 8px;
+  }
+
+  .settings-divider {
+    height: 1px;
+    background: rgba(96, 165, 250, 0.18);
+    margin: 14px 0 10px;
   }
 
   .hint {
@@ -209,15 +213,15 @@ st.markdown(
     height: 32px;
     border-radius: 999px;
     color: #ffffff !important;
-    background: linear-gradient(135deg, var(--brand-deep), var(--brand));
+    background: linear-gradient(135deg, #2563eb, #60a5fa);
     font-size: 0.9rem;
     font-weight: 800;
-    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.30);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.55);
   }
 
   .section-title h2 {
     margin: 0;
-    color: var(--brand-deep);
+    color: #dbeafe;
     font-size: 1.18rem;
     letter-spacing: 0;
   }
@@ -229,41 +233,42 @@ st.markdown(
     gap: 12px;
     padding: 14px 16px;
     border-radius: 10px;
-    border: 1px solid rgba(29, 78, 216, 0.14);
-    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(96, 165, 250, 0.20);
+    background: rgba(20, 30, 52, 0.75);
   }
 
-  .status-ready strong { color: var(--brand-deep); }
+  .status-ready strong { color: #93c5fd; }
   .status-waiting strong { color: var(--warning); }
+  .status-ready span, .status-waiting span { color: var(--muted); }
 
   .stButton > button {
     border-radius: 10px;
-    border: 1px solid rgba(29, 78, 216, 0.18);
-    background: #ffffff;
-    color: var(--brand-deep);
-    box-shadow: 0 1px 2px rgba(29, 78, 216, 0.06);
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    background: rgba(30, 41, 59, 0.85);
+    color: #dbeafe;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     transition: all 140ms ease;
   }
 
   .stButton > button:hover {
-    border-color: rgba(37, 99, 235, 0.55);
-    color: var(--brand-deep);
-    background: rgba(219, 234, 254, 0.5);
+    border-color: rgba(96, 165, 250, 0.65);
+    color: #ffffff;
+    background: rgba(37, 99, 235, 0.32);
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(29, 78, 216, 0.14);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   }
 
   div[data-testid="stMetric"] {
     padding: 14px 16px;
-    border: 1px solid rgba(29, 78, 216, 0.14);
+    border: 1px solid rgba(96, 165, 250, 0.20);
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(20, 30, 52, 0.80);
   }
 
   div[data-testid="stChatMessage"] {
     border-radius: 10px;
-    border: 1px solid rgba(29, 78, 216, 0.12);
-    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(96, 165, 250, 0.18);
+    background: rgba(20, 30, 52, 0.78);
   }
 
   div[data-testid="stChatMessage"] p,
@@ -273,7 +278,7 @@ st.markdown(
   }
 
   .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {
-    color: var(--brand-deep);
+    color: #e2e8f0;
   }
 
   .stApp p, .stApp li, .stApp label, .stApp span {
@@ -294,12 +299,32 @@ st.markdown(
   div[data-baseweb="input"] input,
   div[data-baseweb="select"] div,
   div[data-baseweb="textarea"] textarea {
+    color: #e2e8f0 !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+  }
+
+  div[data-baseweb="input"], div[data-baseweb="select"] > div, div[data-baseweb="textarea"] {
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-color: rgba(96, 165, 250, 0.28) !important;
+  }
+
+  /* File uploader (drag-drop area) */
+  [data-testid="stFileUploader"] section {
+    background: rgba(20, 30, 52, 0.65) !important;
+    border: 1px dashed rgba(96, 165, 250, 0.35) !important;
+    border-radius: 12px !important;
+  }
+  [data-testid="stFileUploader"] section * {
     color: var(--ink) !important;
-    background: #ffffff !important;
+  }
+  [data-testid="stFileUploader"] button {
+    background: rgba(37, 99, 235, 0.35) !important;
+    color: #dbeafe !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
   }
 
   div[data-testid="stMetricValue"] {
-    color: var(--brand-deep) !important;
+    color: #dbeafe !important;
   }
 
   div[data-testid="stMetricLabel"] {
@@ -308,11 +333,45 @@ st.markdown(
 
   div[data-baseweb="slider"] [role="slider"] {
     background: var(--brand) !important;
+    border-color: var(--accent) !important;
+  }
+
+  div[data-baseweb="slider"] div[data-testid="stTickBar"] * {
+    color: var(--muted) !important;
   }
 
   .stChatInput textarea, .stChatInput input {
+    color: #e2e8f0 !important;
+    background: rgba(15, 23, 42, 0.92) !important;
+  }
+  [data-testid="stChatInput"] {
+    background: rgba(15, 23, 42, 0.92) !important;
+    border: 1px solid rgba(96, 165, 250, 0.30) !important;
+    border-radius: 10px;
+  }
+
+  /* Expander */
+  [data-testid="stExpander"] {
+    background: rgba(20, 30, 52, 0.70) !important;
+    border: 1px solid rgba(96, 165, 250, 0.18) !important;
+    border-radius: 10px;
+  }
+  [data-testid="stExpander"] summary, [data-testid="stExpander"] p {
     color: var(--ink) !important;
-    background: #ffffff !important;
+  }
+
+  /* Alerts */
+  [data-testid="stAlert"] {
+    background: rgba(20, 30, 52, 0.78) !important;
+    color: var(--ink) !important;
+    border: 1px solid rgba(96, 165, 250, 0.22) !important;
+    border-radius: 10px;
+  }
+
+  code, pre {
+    background: rgba(15, 23, 42, 0.92) !important;
+    color: #93c5fd !important;
+    border-radius: 6px;
   }
 
   .footer {
@@ -533,11 +592,15 @@ Follow these rules strictly:
 
 
 # ----------------------------
-# Sidebar Controls
+# Layout: main on left, settings panel on right
 # ----------------------------
-with st.sidebar:
-    st.markdown("### Settings")
-    st.caption("검색 품질과 응답 스타일을 조정합니다.")
+main_col, right_col = st.columns([3, 1], gap="large")
+
+with right_col:
+    st.markdown('<div class="settings-panel">', unsafe_allow_html=True)
+    st.markdown("### ⚙ Settings")
+    st.markdown('<div class="settings-sub">검색 품질과 응답 스타일을 조정합니다.</div>', unsafe_allow_html=True)
+
     api_key_input = st.text_input(
         "OpenAI API Key",
         type="password",
@@ -547,7 +610,8 @@ with st.sidebar:
     if api_key_input:
         st.session_state.openai_api_key = api_key_input
 
-    st.markdown("#### Response")
+    st.markdown('<div class="settings-divider"></div>', unsafe_allow_html=True)
+    st.markdown("**Response**")
     model = st.selectbox("모델", ["gpt-4o-mini", "gpt-4o", "gpt-4.1-mini"], index=0)
     temperature = st.slider("창의성 (temperature)", 0.0, 1.0, 0.2, 0.1)
     question_type = st.selectbox(
@@ -556,13 +620,15 @@ with st.sidebar:
         index=0,
     )
 
-    st.markdown("#### Retrieval")
+    st.markdown('<div class="settings-divider"></div>', unsafe_allow_html=True)
+    st.markdown("**Retrieval**")
     chunk_size = st.slider("청크 크기", 200, 2000, 700, 50)
     chunk_overlap = st.slider("청크 중첩", 0, 400, 150, 10)
     top_k = st.slider("검색 문서 수 (k)", 1, 10, 5, 1)
 
-    st.markdown("---")
+    st.markdown('<div class="settings-divider"></div>', unsafe_allow_html=True)
     clear_btn = st.button("Reset index and chat", use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ----------------------------
@@ -577,166 +643,167 @@ if "messages" not in st.session_state:
     st.session_state.messages = []  # list of (role, content)
 
 
-# ----------------------------
-# Upload & Index Build
-# ----------------------------
-st.markdown(
-    '<div class="section-title"><span>1</span><h2>문서 업로드</h2></div>',
-    unsafe_allow_html=True,
-)
-st.markdown(
-    '<div class="callout">Contract Guidelines 문서를 업로드하면 계약업무지침 전용 벡터 인덱스를 생성합니다. PDF, TXT, DOCX를 권장하며, 구형 DOC는 문서 구조에 따라 추출 품질이 달라질 수 있습니다.</div>',
-    unsafe_allow_html=True,
-)
-
-uploads = st.file_uploader(
-    "문서 선택",
-    type=["pdf", "txt", "doc", "docx"],
-    accept_multiple_files=True,
-    label_visibility="collapsed",
-)
-
 api_key = load_api_key()
 
-build_col1, build_col2 = st.columns([1, 3])
-with build_col1:
-    build_clicked = st.button("Build index", use_container_width=True)
-with build_col2:
-    st.markdown("<span class=hint>업로드 후 인덱스를 생성하면 챗봇이 해당 문서를 근거로 답변합니다.</span>", unsafe_allow_html=True)
+with main_col:
+    # ----------------------------
+    # Upload & Index Build
+    # ----------------------------
+    st.markdown(
+        '<div class="section-title"><span>1</span><h2>문서 업로드</h2></div>',
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        '<div class="callout">Contract Guidelines 문서를 업로드하면 계약업무지침 전용 벡터 인덱스를 생성합니다. PDF, TXT, DOCX를 권장하며, 구형 DOC는 문서 구조에 따라 추출 품질이 달라질 수 있습니다.</div>',
+        unsafe_allow_html=True,
+    )
 
-if build_clicked:
-    if not api_key:
-        st.error("OpenAI API Key가 필요합니다. 사이드바에 입력하거나 환경변수 설정하세요.")
-    elif not uploads:
-        st.error("최소 1개 이상의 파일을 업로드하세요.")
-    else:
-        try:
-            texts_with_sources: List[Tuple[str, str]] = []
-            for f in uploads:
-                text, src = read_uploaded_file(f)
-                texts_with_sources.append((text, src))
+    uploads = st.file_uploader(
+        "문서 선택",
+        type=["pdf", "txt", "doc", "docx"],
+        accept_multiple_files=True,
+        label_visibility="collapsed",
+    )
 
-            docs = chunk_documents(texts_with_sources, chunk_size, chunk_overlap)
-            vs = build_vectorstore(docs, api_key)
-            st.session_state.vectorstore = vs
-            st.session_state.docs_info = {
-                "num_files": len(uploads),
-                "num_chunks": len(docs),
-                "files": [f.name for f in uploads],
-            }
-            st.success("인덱스 생성 완료! 계약업무지침 기반 질문을 입력하세요.")
-        except Exception as e:
-            st.error(f"인덱스 생성 실패: {e}")
+    build_col1, build_col2 = st.columns([1, 3])
+    with build_col1:
+        build_clicked = st.button("Build index", use_container_width=True)
+    with build_col2:
+        st.markdown("<span class=hint>업로드 후 인덱스를 생성하면 챗봇이 해당 문서를 근거로 답변합니다.</span>", unsafe_allow_html=True)
 
-
-# ----------------------------
-# Recommended Questions
-# ----------------------------
-st.markdown(
-    '<div class="section-title"><span>2</span><h2>추천 질문</h2></div>',
-    unsafe_allow_html=True,
-)
-demo_questions = [
-    "When can a contract document be omitted?",
-    "When is a private contract allowed?",
-    "What are the conditions for guarantee deposit exemption?",
-    "What is the penalty rate for delayed performance?",
-    "What should be done when bad debt occurs after 91 days?",
-    "Can advance payment be made for a 10 million KRW or higher contract?",
-]
-question_cols = st.columns(2)
-for i, sample_question in enumerate(demo_questions):
-    with question_cols[i % 2]:
-        if st.button(sample_question, key=f"demo_question_{i}", use_container_width=True):
-            st.session_state.pending_question = sample_question
-
-
-# ----------------------------
-# Index Status
-# ----------------------------
-st.markdown(
-    '<div class="section-title"><span>3</span><h2>인덱스 상태</h2></div>',
-    unsafe_allow_html=True,
-)
-status_container = st.container()
-with status_container:
-    if "vectorstore" in st.session_state:
-        info = st.session_state.get("docs_info", {})
-        st.markdown(
-            '<div class="status-ready"><strong>Ready</strong><span>문서 검색 인덱스가 준비되었습니다.</span></div>',
-            unsafe_allow_html=True,
-        )
-        metric_cols = st.columns(3)
-        metric_cols[0].metric("Files", info.get("num_files", 0))
-        metric_cols[1].metric("Chunks", info.get("num_chunks", 0))
-        metric_cols[2].metric("Top-k", top_k)
-        if info.get("files"):
-            st.caption("업로드 파일: " + ", ".join(info["files"]))
-    else:
-        st.markdown(
-            '<div class="status-waiting"><strong>Waiting</strong><span>아직 인덱스가 생성되지 않았습니다.</span></div>',
-            unsafe_allow_html=True,
-        )
-
-
-# ----------------------------
-# Chat Interface
-# ----------------------------
-st.markdown(
-    '<div class="section-title"><span>4</span><h2>챗봇</h2></div>',
-    unsafe_allow_html=True,
-)
-chat_container = st.container()
-
-with chat_container:
-    for role, content in st.session_state.messages:
-        with st.chat_message(role):
-            st.markdown(content)
-
-    pending_question = st.session_state.pop("pending_question", None)
-    typed_question = st.chat_input("계약업무지침에 대해 질문하세요…")
-    user_input = pending_question or typed_question
-
-    if user_input:
-        if "vectorstore" not in st.session_state:
-            st.error("먼저 파일을 업로드하고 인덱스를 생성하세요.")
-        elif not api_key:
-            st.error("OpenAI API Key가 필요합니다.")
+    if build_clicked:
+        if not api_key:
+            st.error("OpenAI API Key가 필요합니다. 오른쪽 설정 패널에 입력하거나 환경변수를 설정하세요.")
+        elif not uploads:
+            st.error("최소 1개 이상의 파일을 업로드하세요.")
         else:
-            st.session_state.messages.append(("user", user_input))
-            with st.chat_message("user"):
-                st.markdown(user_input)
-
             try:
-                retriever = st.session_state.vectorstore.as_retriever(
-                    search_type="similarity",
-                    search_kwargs={"k": top_k},
-                )
-                # LangChain retrievers use .invoke() in recent versions
-                retrieved_docs: List[Document] = retriever.invoke(user_input)
+                texts_with_sources: List[Tuple[str, str]] = []
+                for f in uploads:
+                    text, src = read_uploaded_file(f)
+                    texts_with_sources.append((text, src))
 
-                with st.spinner("답변 생성 중…"):
-                    answer = generate_answer(user_input, retrieved_docs, api_key, model, temperature, question_type)
-
-                with st.chat_message("assistant"):
-                    st.caption("계약업무지침 기반 답변입니다")
-                    st.markdown(answer)
-                    with st.expander("참조 조항 보기"):
-                        for i, d in enumerate(retrieved_docs, start=1):
-                            src = d.metadata.get("source", "unknown")
-                            chunk_number = d.metadata.get("chunk_number", i)
-                            preview = d.page_content[:1000] + ("…" if len(d.page_content) > 1000 else "")
-                            st.markdown(f"**참조 {i}**")
-                            st.markdown(f"- Source file name: `{src}`")
-                            st.markdown(f"- Retrieved chunk number: `{chunk_number}`")
-                            st.write(preview)
-
-                st.session_state.messages.append(("assistant", answer))
+                docs = chunk_documents(texts_with_sources, chunk_size, chunk_overlap)
+                vs = build_vectorstore(docs, api_key)
+                st.session_state.vectorstore = vs
+                st.session_state.docs_info = {
+                    "num_files": len(uploads),
+                    "num_chunks": len(docs),
+                    "files": [f.name for f in uploads],
+                }
+                st.success("인덱스 생성 완료! 계약업무지침 기반 질문을 입력하세요.")
             except Exception as e:
-                err_msg = f"오류가 발생했습니다: {e}"
-                with st.chat_message("assistant"):
-                    st.error(err_msg)
-                st.session_state.messages.append(("assistant", err_msg))
+                st.error(f"인덱스 생성 실패: {e}")
+
+
+    # ----------------------------
+    # Recommended Questions
+    # ----------------------------
+    st.markdown(
+        '<div class="section-title"><span>2</span><h2>추천 질문</h2></div>',
+        unsafe_allow_html=True,
+    )
+    demo_questions = [
+        "When can a contract document be omitted?",
+        "When is a private contract allowed?",
+        "What are the conditions for guarantee deposit exemption?",
+        "What is the penalty rate for delayed performance?",
+        "What should be done when bad debt occurs after 91 days?",
+        "Can advance payment be made for a 10 million KRW or higher contract?",
+    ]
+    question_cols = st.columns(2)
+    for i, sample_question in enumerate(demo_questions):
+        with question_cols[i % 2]:
+            if st.button(sample_question, key=f"demo_question_{i}", use_container_width=True):
+                st.session_state.pending_question = sample_question
+
+
+    # ----------------------------
+    # Index Status
+    # ----------------------------
+    st.markdown(
+        '<div class="section-title"><span>3</span><h2>인덱스 상태</h2></div>',
+        unsafe_allow_html=True,
+    )
+    status_container = st.container()
+    with status_container:
+        if "vectorstore" in st.session_state:
+            info = st.session_state.get("docs_info", {})
+            st.markdown(
+                '<div class="status-ready"><strong>Ready</strong><span>문서 검색 인덱스가 준비되었습니다.</span></div>',
+                unsafe_allow_html=True,
+            )
+            metric_cols = st.columns(3)
+            metric_cols[0].metric("Files", info.get("num_files", 0))
+            metric_cols[1].metric("Chunks", info.get("num_chunks", 0))
+            metric_cols[2].metric("Top-k", top_k)
+            if info.get("files"):
+                st.caption("업로드 파일: " + ", ".join(info["files"]))
+        else:
+            st.markdown(
+                '<div class="status-waiting"><strong>Waiting</strong><span>아직 인덱스가 생성되지 않았습니다.</span></div>',
+                unsafe_allow_html=True,
+            )
+
+
+    # ----------------------------
+    # Chat Interface
+    # ----------------------------
+    st.markdown(
+        '<div class="section-title"><span>4</span><h2>챗봇</h2></div>',
+        unsafe_allow_html=True,
+    )
+    chat_container = st.container()
+
+    with chat_container:
+        for role, content in st.session_state.messages:
+            with st.chat_message(role):
+                st.markdown(content)
+
+        pending_question = st.session_state.pop("pending_question", None)
+        typed_question = st.chat_input("계약업무지침에 대해 질문하세요…")
+        user_input = pending_question or typed_question
+
+        if user_input:
+            if "vectorstore" not in st.session_state:
+                st.error("먼저 파일을 업로드하고 인덱스를 생성하세요.")
+            elif not api_key:
+                st.error("OpenAI API Key가 필요합니다.")
+            else:
+                st.session_state.messages.append(("user", user_input))
+                with st.chat_message("user"):
+                    st.markdown(user_input)
+
+                try:
+                    retriever = st.session_state.vectorstore.as_retriever(
+                        search_type="similarity",
+                        search_kwargs={"k": top_k},
+                    )
+                    # LangChain retrievers use .invoke() in recent versions
+                    retrieved_docs: List[Document] = retriever.invoke(user_input)
+
+                    with st.spinner("답변 생성 중…"):
+                        answer = generate_answer(user_input, retrieved_docs, api_key, model, temperature, question_type)
+
+                    with st.chat_message("assistant"):
+                        st.caption("계약업무지침 기반 답변입니다")
+                        st.markdown(answer)
+                        with st.expander("참조 조항 보기"):
+                            for i, d in enumerate(retrieved_docs, start=1):
+                                src = d.metadata.get("source", "unknown")
+                                chunk_number = d.metadata.get("chunk_number", i)
+                                preview = d.page_content[:1000] + ("…" if len(d.page_content) > 1000 else "")
+                                st.markdown(f"**참조 {i}**")
+                                st.markdown(f"- Source file name: `{src}`")
+                                st.markdown(f"- Retrieved chunk number: `{chunk_number}`")
+                                st.write(preview)
+
+                    st.session_state.messages.append(("assistant", answer))
+                except Exception as e:
+                    err_msg = f"오류가 발생했습니다: {e}"
+                    with st.chat_message("assistant"):
+                        st.error(err_msg)
+                    st.session_state.messages.append(("assistant", err_msg))
 
 
 st.markdown("---")
