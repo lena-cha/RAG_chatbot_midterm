@@ -53,12 +53,41 @@ st.markdown(
   }
 
   section[data-testid="stSidebar"] {
-    background: rgba(248, 251, 255, 0.85);
-    border-right: 1px solid rgba(29, 78, 216, 0.12);
+    background: rgba(248, 251, 255, 0.95);
+    border-right: 1px solid rgba(29, 78, 216, 0.16);
+    min-width: 320px !important;
   }
 
   section[data-testid="stSidebar"] > div {
-    padding-top: 1.2rem;
+    padding: 1.6rem 1.4rem 1.2rem 1.4rem;
+  }
+
+  section[data-testid="stSidebar"] h1,
+  section[data-testid="stSidebar"] h2,
+  section[data-testid="stSidebar"] h3,
+  section[data-testid="stSidebar"] h4,
+  section[data-testid="stSidebar"] p,
+  section[data-testid="stSidebar"] label,
+  section[data-testid="stSidebar"] span,
+  section[data-testid="stSidebar"] div {
+    color: var(--ink) !important;
+  }
+
+  section[data-testid="stSidebar"] h3,
+  section[data-testid="stSidebar"] h4 {
+    color: var(--brand-deep) !important;
+    margin-top: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  section[data-testid="stSidebar"] [data-testid="stCaptionContainer"],
+  section[data-testid="stSidebar"] small {
+    color: var(--muted) !important;
+  }
+
+  section[data-testid="stSidebar"] hr {
+    border-color: rgba(29, 78, 216, 0.18);
+    margin: 1rem 0;
   }
 
   .block-container {
@@ -179,11 +208,11 @@ st.markdown(
     width: 32px;
     height: 32px;
     border-radius: 999px;
-    color: white;
-    background: linear-gradient(135deg, var(--brand), var(--accent-soft));
+    color: #ffffff !important;
+    background: linear-gradient(135deg, var(--brand-deep), var(--brand));
     font-size: 0.9rem;
     font-weight: 800;
-    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.30);
   }
 
   .section-title h2 {
@@ -235,6 +264,55 @@ st.markdown(
     border-radius: 10px;
     border: 1px solid rgba(29, 78, 216, 0.12);
     background: rgba(255, 255, 255, 0.85);
+  }
+
+  div[data-testid="stChatMessage"] p,
+  div[data-testid="stChatMessage"] li,
+  div[data-testid="stChatMessage"] span {
+    color: var(--ink) !important;
+  }
+
+  .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {
+    color: var(--brand-deep);
+  }
+
+  .stApp p, .stApp li, .stApp label, .stApp span {
+    color: var(--ink);
+  }
+
+  .stApp [data-testid="stCaptionContainer"],
+  .stApp small {
+    color: var(--muted) !important;
+  }
+
+  .stApp [data-testid="stMarkdownContainer"] p,
+  .stApp [data-testid="stMarkdownContainer"] li {
+    color: var(--ink);
+  }
+
+  .stApp input, .stApp textarea, .stApp select,
+  div[data-baseweb="input"] input,
+  div[data-baseweb="select"] div,
+  div[data-baseweb="textarea"] textarea {
+    color: var(--ink) !important;
+    background: #ffffff !important;
+  }
+
+  div[data-testid="stMetricValue"] {
+    color: var(--brand-deep) !important;
+  }
+
+  div[data-testid="stMetricLabel"] {
+    color: var(--muted) !important;
+  }
+
+  div[data-baseweb="slider"] [role="slider"] {
+    background: var(--brand) !important;
+  }
+
+  .stChatInput textarea, .stChatInput input {
+    color: var(--ink) !important;
+    background: #ffffff !important;
   }
 
   .footer {
