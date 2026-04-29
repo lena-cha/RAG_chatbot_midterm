@@ -548,6 +548,28 @@ def format_context(docs: List[Document]) -> str:
     return "\n\n".join(blocks)
 
 
+def translate_to_korean_if_needed(query: str, api_key: str, model: str) -> str:
+    """
+    Contract guidelines are in Korean, but the UI/sample questions are in English.
+    If the query has no Korean characters, translate it to Korean so the embedding
+    query matches the Korean document chunks. Korean queries pass through unchanged.
+    """
+    if re.search(r"[가-힣]", query):
+        return query
+    llm = ChatOpenAI(model=model, temperature=0, api_key=api_key)
+    translation_prompt = (
+        "Translate the following question into natural Korean as used in Korean "
+        "business/contract (계약업무) context. Preserve the meaning and use the "
+        "Korean terminology a procurement or contract officer would use "
+        "(e.g., '계약서', '수의계약', '계약보증금', '지체상금', '대손'). "
+        "Output ONLY the Korean translation, with no quotes or extra commentary.\n\n"
+        f"Question: {query}\n\n한국어 번역:"
+    )
+    res = llm.invoke([{"role": "user", "content": translation_prompt}])
+    translated = res.content if hasattr(res, "content") else str(res)
+    return translated.strip()
+
+
 def generate_answer(
     query: str,
     retrieved_docs: List[Document],
@@ -778,18 +800,23 @@ with main_col:
                     st.markdown(user_input)
 
                 try:
+                    with st.spinner("질문을 한국어로 변환 중…"):
+                        korean_query = translate_to_korean_if_needed(user_input, api_key, model)
+
                     retriever = st.session_state.vectorstore.as_retriever(
                         search_type="similarity",
                         search_kwargs={"k": top_k},
                     )
                     # LangChain retrievers use .invoke() in recent versions
-                    retrieved_docs: List[Document] = retriever.invoke(user_input)
+                    retrieved_docs: List[Document] = retriever.invoke(korean_query)
 
                     with st.spinner("답변 생성 중…"):
-                        answer = generate_answer(user_input, retrieved_docs, api_key, model, temperature, question_type)
+                        answer = generate_answer(korean_query, retrieved_docs, api_key, model, temperature, question_type)
 
                     with st.chat_message("assistant"):
                         st.caption("계약업무지침 기반 답변입니다")
+                        if korean_query != user_input:
+                            st.caption(f"검색에 사용된 한국어 질의: {korean_query}")
                         st.markdown(answer)
                         with st.expander("참조 조항 보기"):
                             for i, d in enumerate(retrieved_docs, start=1):
