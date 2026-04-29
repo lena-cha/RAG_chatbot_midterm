@@ -729,12 +729,12 @@ with main_col:
         unsafe_allow_html=True,
     )
     demo_questions = [
-        "When can a contract document be omitted?",
-        "When is a private contract allowed?",
-        "What are the conditions for guarantee deposit exemption?",
-        "What is the penalty rate for delayed performance?",
-        "What should be done when bad debt occurs after 91 days?",
-        "Can advance payment be made for a 10 million KRW or higher contract?",
+        "계약서 작성을 생략할 수 있는 경우는 언제인가요?",
+        "수의계약은 어떤 경우에 허용되나요?",
+        "계약보증금 면제 조건은 무엇인가요?",
+        "지체상금률은 얼마인가요?",
+        "91일 경과 후 대손이 발생한 경우 어떻게 처리해야 하나요?",
+        "1천만 원 이상 계약에서 선금 지급이 가능한가요?",
     ]
     question_cols = st.columns(2)
     for i, sample_question in enumerate(demo_questions):
