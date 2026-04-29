@@ -220,12 +220,6 @@ st.markdown(
     line-height: 1.2;
   }
 
-  .section-title span:first-child::after {
-    content: ".";
-    color: #60a5fa;
-    margin-left: 1px;
-  }
-
   .section-title h2 {
     margin: 0;
     color: #dbeafe;
