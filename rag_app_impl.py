@@ -200,30 +200,39 @@ st.markdown(
 
   .section-title {
     display: flex;
-    align-items: center;
-    gap: 12px;
+    align-items: baseline;
+    gap: 10px;
     margin: 26px 0 12px;
+    white-space: nowrap;
   }
 
   .section-title span:first-child {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 999px;
-    color: #ffffff !important;
-    background: linear-gradient(135deg, #2563eb, #60a5fa);
-    font-size: 0.9rem;
+    display: inline;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    color: #60a5fa;
+    font-size: 1.18rem;
     font-weight: 800;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.55);
+    line-height: 1.2;
+  }
+
+  .section-title span:first-child::after {
+    content: ".";
+    color: #60a5fa;
+    margin-left: 1px;
   }
 
   .section-title h2 {
     margin: 0;
     color: #dbeafe;
     font-size: 1.18rem;
+    font-weight: 700;
     letter-spacing: 0;
+    line-height: 1.2;
   }
 
   .status-ready, .status-waiting {
